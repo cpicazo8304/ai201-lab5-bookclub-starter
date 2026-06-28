@@ -26,3 +26,13 @@ It is promised that the most recently completed book will be first on the list, 
 The books_this_month and total_pages_read stats are correct, but the reading_streak is incorrect. Could be a bug in get_reading_history. However, if the function was wrong, then the other stats would be wrong. The only way the function could be wrong and have two of the stats be right is the fact that the two other stats don't care about order, but rather if the right books are included. reading_streak requires to read the order correctly, so calculate_streak must be doing something wrong. If the get_reading_history function was wrong, all three stats would be affected. Since only one stat is affected, the bug exists within the corresponding stat's function.
 
 **Expected Streak:** 1
+
+
+## Milestone 3 Notes
+
+### Diagnosis
+
+The docstring says: Calculate a user's current reading streak in consecutive days, starting from the most recent finished_at date
+The code does: Gets unique started_at dates and orders from most recent started_at to latest
+The bug is on line: set(e.started_at.date() for e in events)
+The fix is: use e.finished_at instead of e.started_at         
