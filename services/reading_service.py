@@ -140,6 +140,6 @@ def get_currently_reading(user_id: str) -> list[ReadingEvent]:
     return (
         ReadingEvent.query.filter_by(user_id=user_id)
         .filter(ReadingEvent.finished_at.is_(None))
-        .order_by(ReadingEvent.started_at.desc())
+        .order_by(ReadingEvent.finished_at.desc())
         .all()
     )
