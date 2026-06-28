@@ -28,3 +28,20 @@ def get_stats(user_id):
             "total_pages_read": stats_service.total_pages_read(user_id),
         }
     )
+
+@stats_bp.route("/<user_id>/genre-streak/<genre>", methods=["GET"])
+def get_genre_streak(user_id, genre):
+    """
+    Return the reading streak for a specific genre for a user.
+
+    Args:
+        user_id: ID of the user.
+        genre: The genre to calculate the streak for.
+    """
+    return jsonify(
+        {
+            "user_id": user_id,
+            "genre": genre,
+            "genre_streak": stats_service.calculate_genre_streak(user_id, genre),
+        }
+    )

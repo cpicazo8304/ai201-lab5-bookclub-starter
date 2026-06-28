@@ -47,8 +47,3 @@ The docstring says: Return the books a user has finished, most recently finished
 The code does: orders by descending started_at datetime.
 The bug is on line: .order_by(ReadingEvent.started_at.desc())
 The fix is: replace .started_at with .finished_at
-
-
-curl http://127.0.0.1:5000/stats/c4dcc585-a896-4539-9350-31d90999a6e2
-
-curl http://127.0.0.1:5000/reading/history/c4dcc585-a896-4539-9350-31d90999a6e2
